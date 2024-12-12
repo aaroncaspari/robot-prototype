@@ -263,7 +263,7 @@ def runrmt(wannaquit):
         elif key == 'n':
             try:
                 #  get the distance / free space directly in front of the robot; corrected for case measures
-                pdist = int(ctrl.get_stat.get_distance(10))
+                pdist = int(ctrl.get_distance(10))
                 if pdist == [8190 or 8161]:
                     pdist = '>failure<'
                 print("Distance: ", pdist, "mm")
@@ -275,11 +275,11 @@ def runrmt(wannaquit):
             try:
                 dcm = 1
                 #  get more accurate distance by averaging multiple pings
-                dist1 = float(ctrl.get_stat.precise_distance())
+                dist1 = float(ctrl.precise_distance())
                 print("---\nDistance: ", dist1, "mm")
-                dist2 = float(ctrl.get_stat.precise_distance())
+                dist2 = float(ctrl.precise_distance())
                 print("Distance: ", dist2, "mm")
-                dist3 = float(ctrl.get_stat.precise_distance())
+                dist3 = float(ctrl.precise_distance())
                 print("Distance: ", dist3, "mm")
                 avg = (dist1+dist2+dist3)/3
                 pavg = int(avg*(10**dcm))/(10**dcm)
