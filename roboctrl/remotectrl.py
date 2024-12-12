@@ -57,7 +57,7 @@ ptime = float(0.00420)
 def quiting(quit_try):
     if quit_try == 10:
         print("Forcing...")
-        ctrl.drive.full_stop()
+        ctrl.Drive.full_stop()
         sleep(1)
         sys.exit(2)
     bye = str(input("really quit? [y/N]: "))
@@ -71,7 +71,7 @@ def quiting(quit_try):
             runrmt(quit_try)
         if bye in ['y', 'Y']:
             print("\nbye.")
-            ctrl.drive.full_stop()
+            ctrl.Drive.full_stop()
             sys.exit(0)
         elif bye not in ['y', 'Y', 'n', 'N']:
             if quit_try != 9:
@@ -88,7 +88,7 @@ def runrmt(wannaquit):
         if key == "w":  # directions
             try:
                 print("w pressed")
-                ctrl.drive.drive_forward(spd, pspd)
+                ctrl.Drive.drive_forward(spd, pspd)
                 stpc.stopatcoll()
                 print("driving forward...")
             except Exception as e:
@@ -97,7 +97,7 @@ def runrmt(wannaquit):
         elif key == "s":
             try:
                 print("s pressed")
-                ctrl.drive.drive_backward(spd, pspd)
+                ctrl.Drive.drive_backward(spd, pspd)
                 stpc.stopatcoll()
                 print('driving backward...')
             except Exception as e:
@@ -106,7 +106,7 @@ def runrmt(wannaquit):
         elif key == "a":
             try:
                 print("a pressed")
-                ctrl.drive.turn_left(pspd, tspd)
+                ctrl.Drive.turn_left(pspd, tspd)
                 print('turning left...')
             except Exception as e:
                 print("failed", e)
@@ -114,7 +114,7 @@ def runrmt(wannaquit):
         elif key == "d":
             try:
                 print("d pressed")
-                ctrl.drive.turn_right(pspd, tspd)
+                ctrl.Drive.turn_right(pspd, tspd)
                 print('turning right...')
             except Exception as e:
                 print("failed", e)
@@ -124,7 +124,7 @@ def runrmt(wannaquit):
                 print("p pressed")
                 # ctrl.prspeed_fw(pspd)
                 # sleep(0.1)
-                ctrl.drive.full_stop()
+                ctrl.Drive.full_stop()
                 print('stoped.')
             except Exception as e:
                 print("failed", e)
@@ -132,7 +132,7 @@ def runrmt(wannaquit):
         elif key == 'e':  # for curves
             try:
                 print("e pressed")
-                ctrl.drive.drive_fwright(spd, pspd, tspd)
+                ctrl.Drive.drive_fwright(spd, pspd, tspd)
                 stpc.stopatcoll()
                 print('driving right...')
             except Exception as e:
@@ -141,7 +141,7 @@ def runrmt(wannaquit):
         elif key == 'x':
             try:
                 print("x pressed")
-                ctrl.drive.drive_bwright(spd, pspd, tspd)
+                ctrl.Drive.drive_bwright(spd, pspd, tspd)
                 stpc.stopatcoll()
                 print('backing right...')
             except Exception as e:
@@ -150,7 +150,7 @@ def runrmt(wannaquit):
         elif key == 'q':
             try:
                 print("q pressed")
-                ctrl.drive.drive_fwleft(spd, pspd, tspd)
+                ctrl.Drive.drive_fwleft(spd, pspd, tspd)
                 stpc.stopatcoll()
                 print('driving left...')
             except Exception as e:
@@ -158,8 +158,13 @@ def runrmt(wannaquit):
                 pass
         elif key == 'y':
             try:
+<<<<<<< HEAD
                 print("y pressed")
                 ctrl.drive.drive_bwleft(spd, pspd, tspd)
+=======
+                print("z pressed")
+                ctrl.Drive.drive_bwleft(spd, pspd, tspd)
+>>>>>>> 1d1c74c (fix class name)
                 stpc.stopatcoll()
                 print('backing left...')
             except Exception as e:
@@ -286,7 +291,7 @@ def runrmt(wannaquit):
 
     print("ready")
     listen_keyboard(on_press=press)
-    ctrl.drive.full_stop()
+    ctrl.Drive.full_stop()
     quiting(wannaquit)
 
 
