@@ -226,7 +226,7 @@ class Drive():
         speed1 = pspd
         speed2 = pspd
         i2cw.drive(speed2, direc2, speed1, direc1)
-        sleep(
+        sleep(ptime)
 
     def full_stop():
         i2cw.stop_all()
@@ -240,12 +240,12 @@ class Status():
     def __init__(self):
 
         self.charge = get_batt()
-        self.tof_distance = get_distance()
+        self.tof_distance = get_distance(3)
         self.bumper = get_bumper()
 
     def reload(self):
 
 
         self.charge = get_batt()
-        self.tof_distance = get_distance()
+        self.tof_distance = get_distance(3)
         self.bumper = get_bumper()
