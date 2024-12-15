@@ -80,153 +80,153 @@ def latchet_bumper():
 class Drive():
 
     def drive_fw_nps(spd):
-        i2cw.direc1 = i2cw.DIRECTION_FORWARD
-        i2cw.direc2 = i2cw.DIRECTION_FORWARD
-        i2cw.speed1 = spd
-        i2cw.speed2 = spd
-        i2cw.drive(i2cw.speed2, i2cw.direc2, i2cw.speed1, i2cw.direc1)
+        direc1 = i2cw.DIRECTION_FORWARD
+        direc2 = i2cw.DIRECTION_FORWARD
+        speed1 = spd
+        speed2 = spd
+        i2cw.drive(speed2, direc2, speed1, direc1)
 
     def drive_forward(spd, pspd):
-        i2cw.direc1 = i2cw.DIRECTION_FORWARD
-        i2cw.direc2 = i2cw.DIRECTION_FORWARD
-        i2cw.speed1 = pspd
-        i2cw.speed2 = pspd
-        i2cw.drive(i2cw.speed2, i2cw.direc2, i2cw.speed1, i2cw.direc1)
+        direc1 = i2cw.DIRECTION_FORWARD
+        direc2 = i2cw.DIRECTION_FORWARD
+        speed1 = pspd
+        speed2 = pspd
+        i2cw.drive(speed2, direc2, speed1, direc1)
         sleep(ptime)
-        i2cw.speed1 = spd
-        i2cw.speed2 = spd
-        i2cw.drive(i2cw.speed2, i2cw.direc2, i2cw.speed1, i2cw.direc1)
+        speed1 = spd
+        speed2 = spd
+        i2cw.drive(speed2, direc2, speed1, direc1)
 
     def drive_backward(spd, pspd):
-        i2cw.direc1 = i2cw.DIRECTION_BACKWARD
-        i2cw.direc2 = i2cw.DIRECTION_BACKWARD
-        i2cw.speed1 = pspd
-        i2cw.speed2 = pspd
-        i2cw.drive(i2cw.speed2, i2cw.direc2, i2cw.speed1, i2cw.direc1)
+        direc1 = i2cw.DIRECTION_BACKWARD
+        direc2 = i2cw.DIRECTION_BACKWARD
+        speed1 = pspd
+        speed2 = pspd
+        i2cw.drive(speed2, direc2, speed1, direc1)
         sleep(ptime)
-        i2cw.speed1 = int(float(spd/1.25))
-        i2cw.speed2 = int(float(spd/1.25))
-        i2cw.drive(i2cw.speed2, i2cw.direc2, i2cw.speed1, i2cw.direc1)
+        speed1 = int(float(spd/1.25))
+        speed2 = int(float(spd/1.25))
+        i2cw.drive(speed2, direc2, speed1, direc1)
 
     def turn_left(pspd, tspd):
-        i2cw.direc1 = i2cw.DIRECTION_BACKWARD
-        i2cw.direc2 = i2cw.DIRECTION_FORWARD
-        i2cw.speed1 = pspd
-        i2cw.speed2 = pspd
-        i2cw.drive(i2cw.speed2, i2cw.direc2, i2cw.speed1, i2cw.direc1)
+        direc1 = i2cw.DIRECTION_BACKWARD
+        direc2 = i2cw.DIRECTION_FORWARD
+        speed1 = pspd
+        speed2 = pspd
+        i2cw.drive(speed2, direc2, speed1, direc1)
         sleep(ptime)
-        i2cw.speed1 = tspd
-        i2cw.speed2 = tspd
-        i2cw.drive(i2cw.speed2, i2cw.direc2, i2cw.speed1, i2cw.direc1)
+        speed1 = tspd
+        speed2 = tspd
+        i2cw.drive(speed2, direc2, speed1, direc1)
 
     def turn_right(pspd, tspd):
-        i2cw.direc1 = i2cw.DIRECTION_FORWARD
-        i2cw.direc2 = i2cw.DIRECTION_BACKWARD
-        i2cw.speed1 = pspd
-        i2cw.speed2 = pspd
-        i2cw.drive(i2cw.speed2, i2cw.direc2, i2cw.speed1, i2cw.direc1)
+        direc1 = i2cw.DIRECTION_FORWARD
+        direc2 = i2cw.DIRECTION_BACKWARD
+        speed1 = pspd
+        speed2 = pspd
+        i2cw.drive(speed2, direc2, speed1, direc1)
         sleep(ptime)
-        i2cw.speed1 = tspd
-        i2cw.speed2 = tspd
-        i2cw.drive(i2cw.speed2, i2cw.direc2, i2cw.speed1, i2cw.direc1)
+        speed1 = tspd
+        speed2 = tspd
+        i2cw.drive(speed2, direc2, speed1, direc1)
 
     def drive_fwleft(spd, pspd, tspd):
-        i2cw.direc1 = i2cw.DIRECTION_FORWARD
-        i2cw.direc2 = i2cw.DIRECTION_FORWARD
-        i2cw.speed1 = pspd
-        i2cw.speed2 = pspd
-        i2cw.drive(i2cw.speed2, i2cw.direc2, i2cw.speed1, i2cw.direc1)
+        direc1 = i2cw.DIRECTION_FORWARD
+        direc2 = i2cw.DIRECTION_FORWARD
+        speed1 = pspd
+        speed2 = pspd
+        i2cw.drive(speed2, direc2, speed1, direc1)
         sleep(ptime)
-        i2cw.speed1 = tspd
-        i2cw.speed2 = spd
-        i2cw.drive(i2cw.speed2, i2cw.direc2, i2cw.speed1, i2cw.direc1)
+        speed1 = tspd
+        speed2 = spd
+        i2cw.drive(speed2, direc2, speed1, direc1)
 
     def drive_fwleftrad(spd, pspd, rad):
         tspd = int(spd/rad)
-        i2cw.direc1 = i2cw.DIRECTION_FORWARD
-        i2cw.direc2 = i2cw.DIRECTION_FORWARD
-        i2cw.speed1 = pspd
-        i2cw.speed2 = pspd
-        i2cw.drive(i2cw.speed2, i2cw.direc2, i2cw.speed1, i2cw.direc1)
+        direc1 = i2cw.DIRECTION_FORWARD
+        direc2 = i2cw.DIRECTION_FORWARD
+        speed1 = pspd
+        speed2 = pspd
+        i2cw.drive(speed2, direc2, speed1, direc1)
         sleep(ptime)
-        i2cw.speed1 = tspd
-        i2cw.speed2 = spd
-        i2cw.drive(i2cw.speed2, i2cw.direc2, i2cw.speed1, i2cw.direc1)
+        speed1 = tspd
+        speed2 = spd
+        i2cw.drive(speed2, direc2, speed1, direc1)
 
     def drive_fwright(spd, pspd, tspd):
-        i2cw.direc1 = i2cw.DIRECTION_FORWARD
-        i2cw.direc2 = i2cw.DIRECTION_FORWARD
-        i2cw.speed1 = pspd
-        i2cw.speed2 = pspd
-        i2cw.drive(i2cw.speed2, i2cw.direc2, i2cw.speed1, i2cw.direc1)
+        direc1 = i2cw.DIRECTION_FORWARD
+        direc2 = i2cw.DIRECTION_FORWARD
+        speed1 = pspd
+        speed2 = pspd
+        i2cw.drive(speed2, direc2, speed1, direc1)
         sleep(ptime)
-        i2cw.speed1 = spd
-        i2cw.speed2 = tspd
-        i2cw.drive(i2cw.speed2, i2cw.direc2, i2cw.speed1, i2cw.direc1)
+        speed1 = spd
+        speed2 = tspd
+        i2cw.drive(speed2, direc2, speed1, direc1)
 
     def drive_fwrightrad(spd, pspd, rad):
         tspd = int(spd/rad)
-        i2cw.direc1 = i2cw.DIRECTION_FORWARD
-        i2cw.direc2 = i2cw.DIRECTION_FORWARD
-        i2cw.speed1 = pspd
-        i2cw.speed2 = pspd
-        i2cw.drive(i2cw.speed2, i2cw.direc2, i2cw.speed1, i2cw.direc1)
+        direc1 = i2cw.DIRECTION_FORWARD
+        direc2 = i2cw.DIRECTION_FORWARD
+        speed1 = pspd
+        speed2 = pspd
+        i2cw.drive(speed2, direc2, speed1, direc1)
         sleep(ptime)
-        i2cw.speed1 = spd
-        i2cw.speed2 = tspd
-        i2cw.drive(i2cw.speed2, i2cw.direc2, i2cw.speed1, i2cw.direc1)
+        speed1 = spd
+        speed2 = tspd
+        i2cw.drive(speed2, direc2, speed1, direc1)
 
     def drive_bwleft(spd, pspd, tspd):
-        i2cw.direc1 = i2cw.DIRECTION_BACKWARD
-        i2cw.direc2 = i2cw.DIRECTION_BACKWARD
-        i2cw.speed1 = pspd
-        i2cw.speed2 = pspd
-        i2cw.drive(i2cw.speed2, i2cw.direc2, i2cw.speed1, i2cw.direc1)
+        direc1 = i2cw.DIRECTION_BACKWARD
+        direc2 = i2cw.DIRECTION_BACKWARD
+        speed1 = pspd
+        speed2 = pspd
+        i2cw.drive(speed2, direc2, speed1, direc1)
         sleep(ptime)
-        i2cw.speed1 = int(float(tspd/1.25))
-        i2cw.speed2 = int(float(spd/1.25))
-        i2cw.drive(i2cw.speed2, i2cw.direc2, i2cw.speed1, i2cw.direc1)
+        speed1 = int(float(tspd/1.25))
+        speed2 = int(float(spd/1.25))
+        i2cw.drive(speed2, direc2, speed1, direc1)
 
     def drive_bwleftrad(spd, pspd, rad):
         tspd = int(spd/rad)
-        i2cw.direc1 = i2cw.DIRECTION_BACKWARD
-        i2cw.direc2 = i2cw.DIRECTION_BACKWARD
-        i2cw.speed1 = pspd
-        i2cw.speed2 = pspd
-        i2cw.drive(i2cw.speed2, i2cw.direc2, i2cw.speed1, i2cw.direc1)
+        direc1 = i2cw.DIRECTION_BACKWARD
+        direc2 = i2cw.DIRECTION_BACKWARD
+        speed1 = pspd
+        speed2 = pspd
+        i2cw.drive(speed2, direc2, speed1, direc1)
         sleep(ptime)
-        i2cw.speed1 = int(float(tspd/1.25))
-        i2cw.speed2 = int(float(spd/1.25))
-        i2cw.drive(i2cw.speed2, i2cw.direc2, i2cw.speed1, i2cw.direc1)
+        speed1 = int(float(tspd/1.25))
+        speed2 = int(float(spd/1.25))
+        i2cw.drive(speed2, direc2, speed1, direc1)
 
     def drive_bwright(spd, pspd, tspd):
-        i2cw.direc1 = i2cw.DIRECTION_BACKWARD
-        i2cw.direc2 = i2cw.DIRECTION_BACKWARD
-        i2cw.speed1 = pspd
-        i2cw.speed2 = pspd
-        i2cw.drive(i2cw.speed2, i2cw.direc2, i2cw.speed1, i2cw.direc1)
+        direc1 = i2cw.DIRECTION_BACKWARD
+        direc2 = i2cw.DIRECTION_BACKWARD
+        speed1 = pspd
+        speed2 = pspd
+        i2cw.drive(speed2, direc2, speed1, direc1)
         sleep(ptime)
-        i2cw.speed1 = int(float(spd/1.25))
-        i2cw.speed2 = int(float(tspd/1.25))
-        i2cw.drive(i2cw.speed2, i2cw.direc2, i2cw.speed1, i2cw.direc1)
+        speed1 = int(float(spd/1.25))
+        speed2 = int(float(tspd/1.25))
+        i2cw.drive(speed2, direc2, speed1, direc1)
 
     def drive_bwrightrad(spd, pspd, rad):
         tspd = int(spd/rad)
-        i2cw.direc1 = i2cw.DIRECTION_BACKWARD
-        i2cw.direc2 = i2cw.DIRECTION_BACKWARD
-        i2cw.speed1 = pspd
-        i2cw.speed2 = pspd
-        i2cw.drive(i2cw.speed2, i2cw.direc2, i2cw.speed1, i2cw.direc1)
+        direc1 = i2cw.DIRECTION_BACKWARD
+        direc2 = i2cw.DIRECTION_BACKWARD
+        speed1 = pspd
+        speed2 = pspd
+        i2cw.drive(speed2, direc2, speed1, direc1)
         sleep(ptime)
-        i2cw.speed1 = int(float(spd/1.25))
-        i2cw.speed2 = int(float(tspd/1.25))
-        i2cw.drive(i2cw.speed2, i2cw.direc2, i2cw.speed1, i2cw.direc1)
+        speed1 = int(float(spd/1.25))
+        speed2 = int(float(tspd/1.25))
+        i2cw.drive(speed2, direc2, speed1, direc1)
 
     def pspeed_psh(pspd):
-        i2cw.speed1 = pspd
-        i2cw.speed2 = pspd
-        i2cw.drive(i2cw.speed2, i2cw.direc2, i2cw.speed1, i2cw.direc1)
-        sleep(ptime)
+        speed1 = pspd
+        speed2 = pspd
+        i2cw.drive(speed2, direc2, speed1, direc1)
+        sleep(
 
     def full_stop():
         i2cw.stop_all()
@@ -244,10 +244,8 @@ class Status():
         self.bumper = get_bumper()
 
     def reload(self):
-        
+
 
         self.charge = get_batt()
         self.tof_distance = get_distance()
         self.bumper = get_bumper()
-
-
