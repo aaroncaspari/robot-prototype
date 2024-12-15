@@ -156,9 +156,9 @@ def runrmt(wannaquit):
             except Exception as e:
                 print("failed", e)
                 pass
-        elif key == 'z':
+        elif key == 'y':
             try:
-                print("z pressed")
+                print("y pressed")
                 ctrl.drive.drive_bwleft(spd, pspd, tspd)
                 stpc.stopatcoll()
                 print('backing left...')
