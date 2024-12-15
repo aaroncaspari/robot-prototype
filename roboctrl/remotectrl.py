@@ -3,7 +3,7 @@
 from sshkeyboard import listen_keyboard, stop_listening  # (to self) why?
 import sys
 import libctrl.ctrl as ctrl
-from libctrl.ctrl import misc_func as stpc
+import libctrl.ctrl as stpc
 from time import sleep
 import traceback
 wannaquit = int(1)
@@ -26,7 +26,7 @@ except Exception as e:
 '''
 spd = speed
 tspd = turnspeed
-pspd = prespeed for getting moving/not overpowering
+pspd = prespeed for getting moving/not overpoweringstpc
 '''
 try:
     tspd = int(float(spd)/2)
@@ -254,7 +254,7 @@ def runrmt(wannaquit):
         elif key == 'm':
             try:  # get battery voltage level; corrected
                 dcm = 2
-                volt = ctrl.get_stat.get_batt()
+                volt = ctrl.get_batt()
                 pvolt = int(volt*(10**dcm))/(10**dcm)
                 print("Voltage: ", pvolt, "V")
             except Exception as e:

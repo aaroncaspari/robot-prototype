@@ -50,40 +50,40 @@ def irritated_react():
         time.sleep(chilltime)
     tspd1 = int(spd1/1.3)
     tspd2 = int(spd2/1.3)
-    dist1 = ctrl.get_stat.get_distance(measures)
+    dist1 = ctrl.get_distance(measures)
     print("irritated:", spd1, spd2, dist1)
     time.sleep(0.01)
-    ctrl.drive.turn_left(pspd, tspd2)
+    ctrl.Drive.turn_left(pspd, tspd2)
     time.sleep(0.5)
-    ctrl.drive.turn_right(pspd, tspd1)
+    ctrl.Drive.turn_right(pspd, tspd1)
     time.sleep(0.3)
-    ctrl.drive.drive_backward(spd1, pspd)
+    ctrl.Drive.drive_backward(spd1, pspd)
     time.sleep(0.1)
-    dist2 = ctrl.get_stat.get_distance(measures)
+    dist2 = ctrl.get_distance(measures)
     return dist1, dist2
 
 
 def avoidance_1(mode):
     try:
         print("reacting...")
-        ctrl.drive.drive_backward(spd, pspd)
+        ctrl.Drive.drive_backward(spd, pspd)
         time.sleep(0.2)
-        ctrl.drive.full_stop()
-        dist1 = ctrl.get_stat.get_distance(measures)
-        ctrl.drive.turn_right(pspd, spd)
+        ctrl.Drive.full_stop()
+        dist1 = ctrl.get_distance(measures)
+        ctrl.Drive.turn_right(pspd, spd)
         time.sleep(0.2)
-        ctrl.drive.full_stop()
-        dist2 = ctrl.get_stat.get_distance(measures)
+        ctrl.Drive.full_stop()
+        dist2 = ctrl.get_distance(measures)
         dist_diff = (dist1 - dist2)
         if (dist1 <= (dist2+(dist1/dist2))) and (dist2 >= s_dist):
             print("avd1r1Distance 1, 2:", dist1, dist2, "keeping ago")
             autorun()
         else:
             print("avd1r2Distance 1, 2:", dist1, dist2, "reacting...")
-            ctrl.drive.turn_left(pspd, spd)
+            ctrl.Drive.turn_left(pspd, spd)
             time.sleep(0.5)
-            ctrl.drive.full_stop()
-            dist3 = ctrl.get_stat.get_distance(measures)
+            ctrl.Drive.full_stop()
+            dist3 = ctrl.get_distance(measures)
             if (dist3 >= dist2) and (dist_diff >= dist2 - dist3):
                 print("avd1 going on")
                 autorun()
@@ -103,24 +103,24 @@ def avoidance_1(mode):
 def avoidance_2(mode):
     try:
         print("reacting...")
-        ctrl.drive.drive_backward(spd, pspd)
+        ctrl.Drive.drive_backward(spd, pspd)
         time.sleep(0.2)
-        ctrl.drive.full_stop()
-        dist1 = ctrl.get_stat.get_distance(measures)
-        ctrl.drive.turn_left(pspd, spd)
+        ctrl.Drive.full_stop()
+        dist1 = ctrl.get_distance(measures)
+        ctrl.Drive.turn_left(pspd, spd)
         time.sleep(0.2)
-        ctrl.drive.full_stop()
-        dist2 = ctrl.get_stat.get_distance(measures)
+        ctrl.Drive.full_stop()
+        dist2 = ctrl.get_distance(measures)
         dist_diff = (dist1 - dist2)
         if (dist1 <= (dist2+(dist1/dist2))) and (dist2 >= s_dist):
             print("avd2r1Distance 1, 2:", dist1, dist2, "keeping ago")
             autorun()
         else:
             print("avd2r2Distance 1, 2:", dist1, dist2, "reacting...")
-            ctrl.drive.turn_right(pspd, spd)
+            ctrl.Drive.turn_right(pspd, spd)
             time.sleep(0.5)
-            ctrl.drive.full_stop()
-            dist3 = ctrl.get_stat.get_distance(measures)
+            ctrl.Drive.full_stop()
+            dist3 = ctrl.get_distance(measures)
             if (dist3 >= dist2) and (dist_diff >= dist2 - dist3):
                 print("avd2 going on")
                 autorun()
@@ -154,16 +154,16 @@ def autorun():
     driving = False
     print("runmode:", runmode)
     try:
-        while ctrl.get_stat.get_distance(measures) >= s_dist:
-            tbump = ctrl.get_stat.get_bumper()
+        while ctrl.get_distance(measures) >= s_dist:
+            tbump = ctrl.get_bumper()
             if runmode == True:
                 uspd = random.randint(int(tspd), int(spd*1.75))
                 if driving == False:
-                    ctrl.misc_func.stopatcoll()
-                    ctrl.drive.drive_forward(int(uspd), int(uspd/2))
+                    ctrl.stopatcoll()
+                    ctrl.Drive.drive_forward(int(uspd), int(uspd/2))
                     driving = True
             if any(tbump):
-                bumper = ctrl.misc_func.latchet_bumper()
+                bumper = ctrl.latchet_bumper()
                 bump = bumper
                 print("bumped!", bump, tbump)
                 if (bump == 0b1) or (bump == 0b10) or (bump == 0b11):
@@ -175,7 +175,7 @@ def autorun():
                 else:
                     print("illegal byte")
                 break
-        print("danger detected:", ctrl.get_stat.measure_dist(1), "mm")
+        print("danger detected:", ctrl.measure_dist(1), "mm")
         reactoprx()
     except Exception as e:
         print("Failure", e)
