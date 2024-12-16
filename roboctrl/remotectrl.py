@@ -7,6 +7,7 @@ import libctrl.ctrl as stpc
 from time import sleep
 import traceback
 wannaquit = int(1)
+spd = int(0)
 # get speed variables.
 try:
     spd = int(sys.argv[1])  # PLEASE dont set spd to 100 (overcurrent)
@@ -14,7 +15,7 @@ try:
         pass
     elif spd <= 7:
         spd = int(7)
-except Exception as e:
+except:
     if len(sys.argv) == 1:
         spd = 30
     elif sys.argv[1] == '-h' or '--help':
