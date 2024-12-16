@@ -62,7 +62,7 @@ def get_bumper():
     swtch_fl = status[3]
     swtch_fr = status[4]
     swtch_sr = status[5]
-    return [swtch_sl, swtch_fl, swtch_fr, swtch_sr]
+    return [status[2], status[3], status[4], status[5]]
 
 
 def get_driving():
