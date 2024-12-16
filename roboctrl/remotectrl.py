@@ -6,6 +6,12 @@ import libctrl.ctrl as ctrl
 import libctrl.ctrl as stpc
 from time import sleep
 import traceback
+
+global spd
+global pspd
+global tspd
+global ptime
+
 wannaquit = int(1)
 spd = int(0)
 # get speed variables.
@@ -24,6 +30,7 @@ except:
         print("\n||wait for >ready<||")
         sleep(0.75)
         sys.exit(0)
+
 '''
 spd = speed
 tspd = turnspeed
@@ -54,6 +61,33 @@ if spd == 0:
 
 ptime = float(0.00420)
 
+
+def change_speed(spd):
+    spd = spd
+    try:
+        tspd = int(float(spd)/2)
+        if spd < 14:
+            tspd = int(8)
+        if spd > 89:
+            tspd = int(65)
+    except Exception as e:
+        print("failed to set turn-speed", e)
+        pass
+    try:
+        pspd = int(float(spd)*1.75)
+        if pspd >= 41:
+            pspd = int(40)
+        elif pspd <= 19:
+            pspd = int(20)
+    except Exception as e:
+        print(e)
+
+    if spd == 0:
+        spd = 0
+        pspd = 0
+        tspd = 0
+
+    ptime = float(0.00420)
 
 def quiting(quit_try):
     if quit_try == 10:
@@ -173,69 +207,69 @@ def runrmt(wannaquit):
                 print("problem leaving...", e)
         elif key == '1':  # for setting speed
             try:
-                spd = int(10)
+                change_speed(10)
                 print("speed set to 10%")
             except Exception as e:
                 print("failed to set speed", e)
                 pass
         elif key == '2':
             try:
-                spd = int(20)
+                change_speed(20)
                 print("speed set to 20%")
             except Exception as e:
                 print("failed to set speed", e)
                 pass
         elif key == '3':
             try:
-                spd = int(30)
+                change_speed(30)
                 print("speed set to 30%")
             except Exception as e:
                 print("failed to set speed", e)
                 pass
         elif key == '4':
             try:
-                spd = int(40)
+                change_speed(40)
                 print("speed set to 40%")
             except Exception as e:
                 print("failed to set speed", e)
                 pass
         elif key == '5':
             try:
-                spd = int(50)
+                change_speed(50)
                 print("speed set to 50%")
             except Exception as e:
                 print("failed to set speed", e)
                 pass
         elif key == '6':
             try:
-                spd = int(60)
+                change_speed(60)
                 print("speed set to 60%")
             except Exception as e:
                 print("failed to set speed", e)
                 pass
         elif key == '7':
             try:
-                spd = int(70)
+                change_speed(70)
                 print("speed set to 70%")
             except Exception as e:
                 print("failed to set speed", e)
         elif key == '8':
             try:
-                spd = int(80)
+                change_speed(80)
                 print("speed set to 80%")
             except Exception as e:
                 print("failed to set speed", e)
                 pass
         elif key == '9':
             try:
-                spd = int(90)
+                change_speed(90)
                 print("speed set to 90%")
             except Exception as e:
                 print("failed to set speed", e)
                 pass
         elif key == 'b':
             try:
-                spd = int(100)
+                change_speed(100)
                 print("speed set to 100%")
             except Exception as e:
                 print("failed to set speed", e)

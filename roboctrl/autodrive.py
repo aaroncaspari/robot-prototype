@@ -45,7 +45,7 @@ def irritated_react():
         spd1 = 0
         spd2 = 0
     if (random.randint(0, 420) <= 100) and (runmode == True):
-        chilltime = float(random.randint(0, 420)/42)
+        chilltime = float(random.randint(0, 420)/84)
         print("chillin'", chilltime, "seconds...")
         time.sleep(chilltime)
     tspd1 = int(spd1/1.3)
